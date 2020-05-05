@@ -3,6 +3,8 @@ import time
 
 
 sleepTime = 2
+
+print('Service A')
 print(f"[*] Sleep de {sleepTime} segundos.")
 time.sleep(sleepTime)
 
@@ -42,9 +44,6 @@ def callback(ch, method, properties, body):
         send_to_next(cmd)
         print("[+] Entregue")
         ch.basic_ack(delivery_tag=method.delivery_tag)
-    elif cmd == 'retentar':
-        print("[-] Retentativa")
-        ch.basic_reject(delivery_tag=method.delivery_tag, requeue=True)
     else:
         ch.basic_reject(delivery_tag=method.delivery_tag, requeue=False)
         print("[ ] Rejeitada")

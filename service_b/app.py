@@ -3,6 +3,9 @@ import time
 from random import randint
 
 sleepTime = 2
+
+
+print('Service B')
 print(f"[*] Sleep de {sleepTime} segundos.")
 time.sleep(sleepTime)
 

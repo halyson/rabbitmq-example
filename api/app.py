@@ -9,7 +9,7 @@ def index():
     return 'OK'
 
 
-@app.route('/add-job/<cmd>')
+@app.route('/message/<cmd>')
 def add(cmd):
     connection = pika.BlockingConnection(
         pika.ConnectionParameters(host='127.0.0.1'))
