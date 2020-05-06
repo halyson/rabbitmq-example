@@ -11,8 +11,8 @@ Password: guest
 - [x] Criar API
 - [x] Criar Service A
 - [x] Criar Service B
-- [ ] Criar dockerfile`s
-- [ ] Criar docker-compose
+- [x] Criar dockerfile`s
+- [x] Criar docker-compose
 - [ ] Refatorar
 - [ ] Finalizar readme
 - [ ] Conclusão
