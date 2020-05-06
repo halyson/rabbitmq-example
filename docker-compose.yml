@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  rabbitmq:
+    image: "rabbitmq:3.8-management-alpine"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config
+      - ./rabbitmq/definitions.json:/opt/definitions.json
+  api:
+    build: api
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ./api:/app
+    ports:
+      - 5000:5000
+    environment:
+      - PYTHONUNBUFFERED=1
+      - RABBITMQ_HOST=rabbitmq
+
+  service-a:
+    build: service-a
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ./service-a:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - RABBITMQ_HOST=rabbitmq
+
+  service-b:
+    build: service-b
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ./service-b:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - RABBITMQ_HOST=rabbitmq

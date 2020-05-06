@@ -1,0 +1,70 @@
+{
+  "rabbit_version": "3.6.16",
+  "users": [
+    {
+      "name": "guest",
+      "password_hash": "SWgBy59F3Ao9aH6qJdmfshaYfDT1k+hHjYTgsDpPRCO2LmFX",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "guest",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "parameters": [],
+  "global_parameters": [
+    {
+      "name": "cluster_name",
+      "value": "rabbit@9295b5d72f51"
+    }
+  ],
+  "policies": [],
+  "queues": [
+    {
+      "name": "task_queue",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "task_queue_b",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "events",
+      "vhost": "/",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "events",
+      "vhost": "/",
+      "destination": "task_queue_b",
+      "destination_type": "queue",
+      "routing_key": "events.calc",
+      "arguments": {}
+    }
+  ]
+}

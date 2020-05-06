@@ -1,5 +1,8 @@
-from flask import Flask
+from flask import Flask, jsonify
 import pika
+import os
+
+RABBITMQ_HOST = os.getenv('RABBITMQ_HOST', '127.0.0.1')
 
 app = Flask(__name__)
 
@@ -12,7 +15,7 @@ def index():
 @app.route('/message/<cmd>')
 def add(cmd):
     connection = pika.BlockingConnection(
-        pika.ConnectionParameters(host='127.0.0.1'))
+        pika.ConnectionParameters(host=RABBITMQ_HOST))
     channel = connection.channel()
     channel.queue_declare(queue='task_queue', durable=True)
     channel.basic_publish(
@@ -23,7 +26,8 @@ def add(cmd):
             delivery_mode=2,  # make message persistent
         ))
     connection.close()
-    return " [x] Sent: %s" % cmd
+    response = {'mensagem': cmd}
+    return jsonify(response), 200
 
 
 if __name__ == '__main__':

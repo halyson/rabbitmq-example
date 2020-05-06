@@ -2,6 +2,10 @@
 
 Projeto de estudo de filas utilizando RabbitMQ.
 
+Acesso ao RabbitMQ: http://localhost:15672
+Username: guest
+Password: guest
+
 ### Tarefas
 
 - [x] Criar API
@@ -11,12 +15,13 @@ Projeto de estudo de filas utilizando RabbitMQ.
 - [ ] Criar docker-compose
 - [ ] Refatorar
 - [ ] Finalizar readme
+- [ ] Conclusão
 
 # Fluxo do projeto
 
 ## API
 
-- recebe um request com uma mensagem via POST http://localhost:5000/message/<msg>
+- Recebe um request com uma mensagem via POST http://localhost:5000/message/<msg>
   - Envia a mensagem para a fila "task_queue" do rabbitmq
 
 ## Service A

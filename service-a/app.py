@@ -1,16 +1,17 @@
 import pika
 import time
+import os
 
-
-sleepTime = 2
+SLEEP_TIME = 10
+RABBITMQ_HOST = os.getenv('RABBITMQ_HOST', '127.0.0.1')
 
 print('Service A')
-print(f"[*] Sleep de {sleepTime} segundos.")
-time.sleep(sleepTime)
+print(f"[*] Sleep de {SLEEP_TIME} segundos.")
+time.sleep(SLEEP_TIME)
 
 print('[*] Conectando no servidor  ...')
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host='127.0.0.1')
+    pika.ConnectionParameters(host=RABBITMQ_HOST)
 )
 channel = connection.channel()
 channel.queue_declare(queue='task_queue', durable=True)
@@ -20,7 +21,7 @@ print('[*] Aguardando mensagens')
 
 def send_to_next(message):
     connection = pika.BlockingConnection(
-        pika.ConnectionParameters(host='127.0.0.1')
+        pika.ConnectionParameters(host=RABBITMQ_HOST)
     )
 
     channel = connection.channel()

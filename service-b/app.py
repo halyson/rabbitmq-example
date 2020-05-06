@@ -1,17 +1,19 @@
 import pika
 import time
 from random import randint
+import os
 
-sleepTime = 2
+SLEEP_TIME = 10
+RABBITMQ_HOST = os.getenv('RABBITMQ_HOST', '127.0.0.1')
 
 
 print('Service B')
-print(f"[*] Sleep de {sleepTime} segundos.")
-time.sleep(sleepTime)
+print(f"[*] Sleep de {SLEEP_TIME} segundos.")
+time.sleep(SLEEP_TIME)
 
 print("[*] Conectando no servidor  ...")
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host='127.0.0.1'))
+    pika.ConnectionParameters(host=RABBITMQ_HOST))
 channel = connection.channel()
 channel.queue_declare(queue='task_queue_b', durable=True)
 
@@ -39,6 +41,7 @@ def callback(ch, method, properties, body):
         response = process_cmd(cmd)
         if response:
             ch.basic_ack(delivery_tag=method.delivery_tag)
+            print("[x] Precessado")
         else:
             # basic_nack tem o mesmo efeito, diferenca apenas semantica
             ch.basic_reject(delivery_tag=method.delivery_tag, requeue=True)
