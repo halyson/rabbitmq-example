@@ -13,6 +13,7 @@ Password: guest
 - [x] Criar Service B
 - [x] Criar dockerfile`s
 - [x] Criar docker-compose
+- [ ] Tornar RabbitMQ resiliente
 - [ ] Refatorar
 - [ ] Finalizar readme
 - [ ] Conclusão
