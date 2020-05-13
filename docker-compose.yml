@@ -16,6 +16,7 @@ services:
     build: api
     depends_on:
       - rabbitmq
+    restart: always
     volumes:
       - ./api:/app
     ports:
@@ -28,6 +29,7 @@ services:
     build: service-a
     depends_on:
       - rabbitmq
+    restart: always
     volumes:
       - ./service-a:/app
     environment:
@@ -38,6 +40,7 @@ services:
     build: service-b
     depends_on:
       - rabbitmq
+    restart: always
     volumes:
       - ./service-b:/app
     environment:
