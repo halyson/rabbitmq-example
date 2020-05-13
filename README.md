@@ -13,10 +13,14 @@ Password: guest
 - [x] Criar Service B
 - [x] Criar dockerfile`s
 - [x] Criar docker-compose
-- [ ] Tornar RabbitMQ resiliente
+- [x] Tornar RabbitMQ resiliente
 - [ ] Refatorar
 - [ ] Finalizar readme
 - [ ] Conclusão
+
+# Deploy
+
+- docker-compose -f "docker-compose.yml" up -d --build
 
 # Fluxo do projeto
 
@@ -50,3 +54,4 @@ Password: guest
 - https://gago.io/blog/rabbitmq-amqp-3-conceitos/
 - https://pika.readthedocs.io/en/stable/index.html
 - https://www.cloudamqp.com/blog/2015-09-03-part4-rabbitmq-for-beginners-exchanges-routing-keys-bindings.html
+- https://hub.docker.com/r/bitnami/rabbitmq/
