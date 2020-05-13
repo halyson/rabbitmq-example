@@ -6,7 +6,10 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+    environment:
+      - RABBITMQ_NODENAME=rabbit@rabbitmq
     volumes:
+      - ./rabbitmq/data:/var/lib/rabbitmq/mnesia
       - ./rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config
       - ./rabbitmq/definitions.json:/opt/definitions.json
   api:
