@@ -3,8 +3,9 @@
 Projeto de estudo de filas utilizando RabbitMQ.
 
 Acesso ao RabbitMQ: http://localhost:15672
-Username: guest
-Password: guest
+
+- Username: guest
+- Password: guest
 
 ### Tarefas
 
