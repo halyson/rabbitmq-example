@@ -50,7 +50,7 @@
     {
       "name": "events",
       "vhost": "/",
-      "type": "fanout",
+      "type": "headers",
       "durable": true,
       "auto_delete": false,
       "internal": false,
