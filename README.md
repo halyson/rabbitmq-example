@@ -2,11 +2,6 @@
 
 Projeto de estudo de filas utilizando RabbitMQ.
 
-Acesso ao RabbitMQ: http://localhost:15672
-
-- Username: guest
-- Password: guest
-
 ### Tarefas
 
 - [x] Criar API
@@ -48,7 +43,14 @@ Para que uma exchange entregue uma mensagem para uma fila, deve haver uma associ
 
 - docker-compose -f "docker-compose.yml" up -d --build
 
+Acesso ao RabbitMQ: http://localhost:15672
+
+- Username: guest
+- Password: guest
+
 # Fluxo do projeto
+
+![Fluxo](fluxo.png)
 
 ## API
 
