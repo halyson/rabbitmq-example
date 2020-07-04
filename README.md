@@ -84,3 +84,5 @@ Acesso ao RabbitMQ: http://localhost:15672
 - https://www.cloudamqp.com/blog/2015-09-03-part4-rabbitmq-for-beginners-exchanges-routing-keys-bindings.html
 - https://hub.docker.com/r/bitnami/rabbitmq/
 - https://dev.to/mviegas/pt-br-introducao-ao-rabbitmq-com-net-core-15oc
+- http://tryrabbitmq.com/ (SIMULADOR)
+- https://www.rabbitmq.com/dlx.html (conceito de DEAD LETTER)
